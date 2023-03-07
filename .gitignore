@@ -1,1 +1,3 @@
 .vagrant/
+yarn.lock
+node_modules/
