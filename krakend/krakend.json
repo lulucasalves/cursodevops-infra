@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "extra_config": {
+    "github_com/letgoapp/middleware/cors": {
+      "allowed_origins": ["*"],
+      "allowed_methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowed_headers": ["*"],
+      "exposed_headers": ["Content-Length", "Authorization"],
+      "allow_credentials": true
+    }
+  },
+  "cache_ttl": "10s",
+  "output_encoding": "json",
+  "port": 8080,
+  "endpoints": [
+    {
+      "endpoint": "/users",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/hc",
+          "host": ["http://localhost:8000"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/products",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/products",
+          "host": ["http://localhost:8000"]
+        }
+      ]
+    }
+  ]
+}
